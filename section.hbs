@@ -52,33 +52,32 @@
 
   {{#if properties}}
     <h4>Properties</h4>
-    <ul class='suppress-p-margin'>
-      {{#properties}}
-        <li>{{format_type type}} <strong>{{name}}</strong>
-            {{#default}}
-              (default <code>{{.}}</code>)
-            {{/default}}
-            {{#description}}
-              :
-              <div class='force-inline'>
-                {{md .}}
-              </div>
-            {{/description}}
-            </li>
+    <div class='table-wrapper'>
+      <table class='params'>
+        <tr>
+          <th>prop</th>
+          <th>type = default</th>
+          <th>description</th>
+        </tr>
+        {{#properties}}
+          <tr class='param'>
+            <td>{{name}}</td>
+            <td>{{format_type type}} {{#default}} (<code>{{.}}</code>){{/default}}</td>
+            <td class='param-description'>{{md description}}</td>
+          </tr>
+
           {{#if properties}}
-          <ul>
             {{#properties}}
-              <li><code>{{name}}</code> {{format_type type}}
-                {{#default}}
-                  (default <code>{{.}}</code>)
-                {{/default}}
-                {{md description}}</li>
+            <tr class='param'>
+              <td>{{name}}</td>
+              <td>{{format_type type}} {{#default}} (<code>{{.}}</code>){{/default}}</td>
+              <td class='param-description'>{{md description}}</td>
+            </tr>
             {{/properties}}
-          </ul>
           {{/if}}
-        </li>
-      {{/properties}}
-    </ul>
+        {{/properties}}
+      </table>
+    </div>
   {{/if}}
 
   {{#if returns}}
@@ -102,7 +101,7 @@
   {{/if}}
 
   {{#if examples}}
-    <h4>Examples</h4>
+    <h4>Example</h4>
   {{#each examples ~}}
     {{#if caption}}<p>{{md caption}}</p>{{/if}}
     <pre class='overflow-auto'>{{highlight description}}</pre>
