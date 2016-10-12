@@ -1,6 +1,6 @@
 {
   "name": "node-mapnik-theme",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "documentationjs theme for Node Mapnik",
   "main": "index.js",
   "scripts": {
